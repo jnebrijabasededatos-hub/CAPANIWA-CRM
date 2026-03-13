@@ -1,57 +1,43 @@
-# 🚀 CaPaNiWa Tech - Business Ecosystem (SGA & CRM)
+# 🚀 CaPaNiWa CRM - Intelligent Sales Module
 
-Bienvenido al ecosistema de **CaPaNiWa Tech**, una suite integral de gestión empresarial diseñada como una solución SaaS modular. Este repositorio contiene una arquitectura robusta que conecta la gestión de almacenes (SGA) con la inteligencia comercial (CRM) y un módulo de facturación automatizada.
+Este es el módulo de **Gestión de Relaciones con Clientes (CRM)** del ecosistema CaPaNiWa Tech. Diseñado como una aplicación independiente (microservicio), su objetivo es centralizar la prospección, el seguimiento comercial y la conversión de leads en ventas reales.
 
-## 📦 Componentes del Ecosistema
+## 💎 Propuesta de Valor
+A diferencia de un CRM tradicional, este módulo está preparado para integrarse de forma nativa con el **SGA (Almacén)** y el próximo **ERP de Finanzas**, compartiendo una capa de datos coherente a través de MongoDB.
 
-### 1. CRM & Sales Intelligence (Puerto 5001)
-Diseñado para transformar leads en ingresos mediante:
-* **Ficha de Cliente Pro:** Registro extendido (Cargo, Email, Teléfono, Empresa).
-* **Comunicación Omnicanal:** Simulación de envío de SMS y Emails con registro automático.
-* **Timeline de Auditoría:** Historial completo de interacciones por cliente (tipo Dynamics 365).
-* **Generación de PDF:** Creación automática de presupuestos profesionales con `jsPDF`.
-* **Conversión Automática:** Al cerrar una venta, el sistema genera automáticamente una factura en el módulo contable.
+## 🛠️ Funcionalidades Core
 
-### 2. SGA - Sistema de Gestión de Almacén (Puerto 5000)
-Control total sobre el inventario físico:
-* **Control de Stock:** Altas, bajas y alertas de stock mínimo.
-* **Etiquetado QR:** Generación de códigos QR para cada producto.
-* **Dashboard de Inventario:** Visualización en tiempo real del estado de los activos.
+### 1. Gestión de Leads 360°
+* **Ficha Extendida:** Captura de nombre, empresa, cargo, email, teléfono y valor estimado.
+* **Timeline de Auditoría:** Registro automático de cada interacción con el cliente para asegurar la trazabilidad comercial.
 
-### 3. Módulo Financiero & Pasarela de Pagos
-* **Gestión de Facturación:** Listado de cobros pendientes y pagados.
-* **Pasarela CaPaNiWa Pay:** Simulación de procesamiento de pagos asíncronos con validación visual.
+### 2. Módulo de Comunicación Activa
+* **Acciones Rápidas:** Botones integrados para simular el envío de **Emails** y **SMS**.
+* **Auto-Log:** Cada comunicación se registra instantáneamente en el historial del cliente.
+
+### 3. Pipeline de Ventas y Conversión
+* **Estados Dinámicos:** Prospecto ➔ Negociación ➔ Cerrado.
+* **Integración con Finanzas:** Al marcar una venta como "Cerrada", el CRM dispara automáticamente una orden de facturación que será procesada por el **ERP de Finanzas**.
 
 ---
 
-## 🛠️ Stack Tecnológico
+## 🏗️ Arquitectura Técnica
 
-**Frontend:**
-* React.js
-* Axios (Gestión de peticiones API)
-* jsPDF & AutoTable (Generación de documentos)
-* CSS Moderno (Diseño responsivo y animaciones)
-
-**Backend:**
-* Node.js & Express
-* MongoDB (Base de datos NoSQL)
-* Mongoose (Modelado de datos)
-* CORS (Seguridad entre servicios)
+* **Frontend:** React.js con hooks para gestión de estado y Axios para consumo de API.
+* **Backend:** Node.js + Express (Puerto `5001`).
+* **Base de Datos:** MongoDB (Colecciones: `clientes` y `facturas`).
+* **Documentación:** Generación de presupuestos en PDF mediante `jsPDF`.
 
 ---
 
-## 🚀 Instalación y Uso
+## 🚀 Instalación y Despliegue
 
-### Requisitos previos
-* Node.js instalado.
-* Instancia de MongoDB corriendo localmente (`mongodb://localhost:27017`).
+### Requisitos
+* Node.js v16+
+* MongoDB corriendo localmente en el puerto `27017`
 
-### Paso 1: Configurar el CRM
+### Configuración del Servidor
 ```bash
-cd CaPaNiWa-CRM/backend
+cd backend
 npm install
 node server.js
-
-cd ../frontend
-npm install
-npm start
